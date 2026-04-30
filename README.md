@@ -176,9 +176,9 @@ finalScore = (
 2. Set environment variables
 3. Railway auto-detects Node.js and deploys
 
-### Frontend (Vercel)
+### Frontend (Railway)
 
-1. Import project to Vercel
+1. Import project to Railway
 2. Set `VITE_API_URL` to your backend URL
 3. Deploy
 
@@ -196,7 +196,7 @@ finalScore = (
 | PORT | Backend server port | 5000 |
 | MONGO_URI | MongoDB connection string | mongodb+srv://... |
 | JWT_SECRET | Secret for JWT signing | any_random_string |
-| GEMINI_API_KEY | Google Gemini API key | AIza... |
+| GROQ_API_KEY | Google Gemini API key | AIza... |
 | VITE_API_URL | Backend API URL | http://localhost:5000/api |
 
 ## License
