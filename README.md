@@ -1,6 +1,6 @@
-# AI Task Manager with Gemini Response Evaluation
+# PromptJudge
 
-A full-stack web application where Admin creates tasks with prompts, the system automatically generates two AI responses using Google Gemini API, and users evaluate both responses using multiple parameters.
+A full-stack web application where Admins create tasks with prompts, the system automatically generates AI responses (or allows manual entry), and Taskers evaluate responses using multiple parameters.
 
 ## Tech Stack
 
@@ -13,13 +13,13 @@ A full-stack web application where Admin creates tasks with prompts, the system 
 ## Features
 
 - JWT-based authentication (Signup/Login)
-- Role-based access (Admin/Member)
+- Role-based access (Admin/Tasker)
 - Admin: Create tasks, view all tasks, assign tasks
-- Member: View assigned tasks, evaluate responses, update task status
+- Tasker: View assigned tasks, generate/enter responses, evaluate and update status
 - Auto AI response generation using Gemini API
-- Dual responses: More Accurate (A) and More Creative (B)
+- Manual Response Fallback: If API generation fails, Taskers can manually input responses from ChatGPT and Gemini.
 - Evaluation with sliders (1-5): Instruction Following, Truthfulness, Writing Style, Verbosity
-- Dashboard with task statistics
+- Modern Dashboard with task statistics and UI animations
 
 ## Project Structure
 
@@ -56,7 +56,8 @@ ethara_project/
     │   │   ├── Login.jsx
     │   │   ├── Signup.jsx
     │   │   ├── TaskDetail.jsx
-    │   │   └── TaskList.jsx
+    │   │   ├── TaskList.jsx
+    │   │   └── Welcome.jsx
     │   ├── App.jsx
     │   ├── main.jsx
     │   └── index.css
@@ -107,26 +108,26 @@ npm run dev
 
 1. **Signup/Login**
    - Go to `/signup` and create an account
-   - Choose "admin" role for creating tasks
-   - Or "member" role for evaluating tasks
+   - Choose "Admin" role for creating tasks
+   - Or "Tasker" role for evaluating tasks
 
 2. **Create Task (Admin)**
+   - Log into the Admin Portal
    - Go to "Create Task"
    - Enter title, description, and prompt
-   - Select deadline and assign user
+   - Select deadline and assign to a Tasker
    - Click "Create Task"
-   - AI responses are auto-generated
 
-3. **Evaluate Responses (Member)**
-   - Open the assigned task
-   - Read both responses (A: Accurate, B: Creative)
-   - Rate each response using sliders
-   - Select preferred response
-   - Submit evaluation
+3. **Evaluate Responses (Tasker)**
+   - Log into the Tasker Portal and open the assigned task
+   - Generate AI responses (if the API fails, manually paste ChatGPT and Gemini responses)
+   - Read and compare both responses
+   - Rate each response using the evaluation sliders
+   - Select preferred response and submit the evaluation
 
 4. **View Dashboard**
    - See total tasks, completed tasks, overdue tasks
-   - View success rate
+   - View success and completion rates
 
 ## API Endpoints
 
