@@ -1,0 +1,194 @@
+# AI Task Manager with Gemini Response Evaluation
+
+A full-stack web application where Admin creates tasks with prompts, the system automatically generates two AI responses using Google Gemini API, and users evaluate both responses using multiple parameters.
+
+## Tech Stack
+
+- **Frontend:** React (Vite) + Tailwind CSS
+- **Backend:** Node.js + Express
+- **Database:** MongoDB (Mongoose)
+- **Auth:** JWT
+- **AI:** Google Gemini API
+
+## Features
+
+- JWT-based authentication (Signup/Login)
+- Role-based access (Admin/Member)
+- Admin: Create tasks, view all tasks, assign tasks
+- Member: View assigned tasks, evaluate responses, update task status
+- Auto AI response generation using Gemini API
+- Dual responses: More Accurate (A) and More Creative (B)
+- Evaluation with sliders (1-5): Instruction Following, Truthfulness, Writing Style, Verbosity
+- Dashboard with task statistics
+
+## Project Structure
+
+```
+ethara_project/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   │   ├── authController.js
+│   │   │   └── taskController.js
+│   │   ├── middleware/
+│   │   │   └── auth.js
+│   │   ├── models/
+│   │   │   ├── Task.js
+│   │   │   └── User.js
+│   │   ├── routes/
+│   │   │   ├── ai.js
+│   │   │   ├── auth.js
+│   │   │   └── tasks.js
+│   │   ├── utils/
+│   │   │   └── gemini.js
+│   │   └── index.js
+│   ├── .env
+│   └── package.json
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   └── Navbar.jsx
+    │   ├── context/
+    │   │   └── AuthContext.jsx
+    │   ├── pages/
+    │   │   ├── CreateTask.jsx
+    │   │   ├── Dashboard.jsx
+    │   │   ├── Login.jsx
+    │   │   ├── Signup.jsx
+    │   │   ├── TaskDetail.jsx
+    │   │   └── TaskList.jsx
+    │   ├── App.jsx
+    │   ├── main.jsx
+    │   └── index.css
+    ├── .env
+    └── package.json
+```
+
+## Setup
+
+### Prerequisites
+
+- Node.js 18+
+- MongoDB Atlas account
+- Google Gemini API key
+
+### Environment Variables
+
+Create `backend/.env`:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+Create `frontend/.env`:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+### Installation
+
+```bash
+# Backend
+cd backend
+npm install
+npm run dev
+
+# Frontend (in new terminal)
+cd frontend
+npm install
+npm run dev
+```
+
+### Demo Flow
+
+1. **Signup/Login**
+   - Go to `/signup` and create an account
+   - Choose "admin" role for creating tasks
+   - Or "member" role for evaluating tasks
+
+2. **Create Task (Admin)**
+   - Go to "Create Task"
+   - Enter title, description, and prompt
+   - Select deadline and assign user
+   - Click "Create Task"
+   - AI responses are auto-generated
+
+3. **Evaluate Responses (Member)**
+   - Open the assigned task
+   - Read both responses (A: Accurate, B: Creative)
+   - Rate each response using sliders
+   - Select preferred response
+   - Submit evaluation
+
+4. **View Dashboard**
+   - See total tasks, completed tasks, overdue tasks
+   - View success rate
+
+## API Endpoints
+
+### Auth
+- `POST /api/auth/signup` - Register user
+- `POST /api/auth/login` - Login user
+- `GET /api/auth/me` - Get current user
+- `GET /api/auth/users` - Get all users (admin)
+
+### Tasks
+- `POST /api/tasks` - Create task (admin, auto-generates AI responses)
+- `GET /api/tasks` - Get all tasks (filtered by user role)
+- `GET /api/tasks/stats` - Get task statistics
+- `GET /api/tasks/:id` - Get single task
+- `PUT /api/tasks/:id/status` - Update task status
+- `POST /api/tasks/:id/evaluate` - Submit evaluation
+
+### AI
+- `POST /api/ai/generate` - Generate AI responses (manual endpoint)
+
+## Final Score Calculation
+
+```
+finalScore = (
+  instructionFollowing × 0.3 +
+  truthfulness × 0.3 +
+  writingStyle × 0.2 +
+  verbosity × 0.2
+)
+```
+
+## Deployment
+
+### Backend (Railway)
+
+1. Connect GitHub repo to Railway
+2. Set environment variables
+3. Railway auto-detects Node.js and deploys
+
+### Frontend (Vercel)
+
+1. Import project to Vercel
+2. Set `VITE_API_URL` to your backend URL
+3. Deploy
+
+### MongoDB Atlas
+
+1. Create free cluster
+2. Get connection string
+3. Add IP to whitelist
+4. Use in backend `MONGO_URI`
+
+## Environment Variables Reference
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| PORT | Backend server port | 5000 |
+| MONGO_URI | MongoDB connection string | mongodb+srv://... |
+| JWT_SECRET | Secret for JWT signing | any_random_string |
+| GEMINI_API_KEY | Google Gemini API key | AIza... |
+| VITE_API_URL | Backend API URL | http://localhost:5000/api |
+
+## License
+
+MIT
