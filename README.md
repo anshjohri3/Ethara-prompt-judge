@@ -108,7 +108,7 @@ npm run dev
 
 | Role   | Email        | Password     |
 |--------|-------------|-------------|
-| Admin  | admin@1234  | admin@1234  |
+| Admin  | admin@1234  | admin1234  |
 | Tasker | aman@1234   | aman@1234   |
 
 
