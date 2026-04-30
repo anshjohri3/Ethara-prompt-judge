@@ -104,15 +104,13 @@ npm install
 npm run dev
 ```
 
+## 🔐 Test Credentials
 
-### Test Login ID and password for ADMIN
-     username - admin@1234
-     password - admin@1234
+| Role   | Email        | Password     |
+|--------|-------------|-------------|
+| Admin  | admin@1234  | admin@1234  |
+| Tasker | aman@1234   | aman@1234   |
 
-
- ### Test Login ID and password for TASKER
-     username - aman@1234
-     password - aman@1234
 
 
 ### Demo Flow
