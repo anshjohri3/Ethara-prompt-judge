@@ -1,6 +1,6 @@
 # PromptJudge
 
-A full-stack web application where Admins create tasks with prompts, the system automatically generates AI responses (or allows manual entry), and Taskers evaluate responses using multiple parameters.
+A full-stack web application where Admins create tasks with prompts, the system automatically generates AI responses (or allows manual entry), and Taskers evaluate responses using multiple parameters like Instruction Following,Truthfulness,Writing Quality,Verbosity.
 
 ## Tech Stack
 
@@ -8,7 +8,7 @@ A full-stack web application where Admins create tasks with prompts, the system 
 - **Backend:** Node.js + Express
 - **Database:** MongoDB (Mongoose)
 - **Auth:** JWT
-- **AI:** Google Gemini API
+- **AI:** GROQ API
 
 ## Features
 
@@ -103,6 +103,17 @@ cd frontend
 npm install
 npm run dev
 ```
+
+
+### Test Login ID and password for ADMIN
+     username - admin@1234
+     password - admin@1234
+
+
+ ### Test Login ID and password for TASKER
+     username - aman@1234
+     password - aman@1234
+
 
 ### Demo Flow
 
